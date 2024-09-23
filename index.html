@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title Page</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon-32x32.png" type="image/png">
+
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -42,7 +45,7 @@
           <div class="panel panel-body">
             <div class="mb-3">
               <input type="checkbox" class="form-check-input" id="isEncodePayloadObject" checked>
-              <label class="form-check-label" for="isEncodePayloadObject" >Is Object</label>
+              <label class="form-check-label" for="isEncodePayloadObject">Is Object</label>
               <textarea name="encodePayload" id="encodePayload" class="form-control" rows="5" onchange="encodeData()"></textarea>
             </div>
           </div>
@@ -62,7 +65,7 @@
           <div class="panel panel-body">
             <div class="mb-3">
               <input type="checkbox" class="form-check-input" id="isDecodePayloadObject" checked>
-              <label class="form-check-label" for="isDecodePayloadObject" >Is Object</label>
+              <label class="form-check-label" for="isDecodePayloadObject">Is Object</label>
               <textarea name="decodePayload" id="decodePayload" class="form-control" rows="5" onchange="decodeData()"></textarea>
             </div>
           </div>
@@ -77,27 +80,27 @@
     </div>
 
     <script>
-      function encodeData(){
+      function encodeData() {
           let data = $("#encodePayload").val().trim() || "";
-          if(data.length > 0){
-            let isDataObject = $("#isEncodePayloadObject").is(":checked");
-            if(isDataObject){
-                data = JSON.stringify(JSON.parse(data));
-            }
-            let encodeObj = Base64.btoa(encodeURI(data));
-            $("#encodeOutput").val(encodeObj);
+          if (data.length > 0) {
+              let isDataObject = $("#isEncodePayloadObject").is(":checked");
+              if (isDataObject) {
+                  data = JSON.stringify(JSON.parse(data));
+              }
+              let encodeObj = Base64.btoa(encodeURI(data));
+              $("#encodeOutput").val(encodeObj);
           }
       }
 
-      function decodeData(){
+      function decodeData() {
           let data = $("#decodePayload").val().trim() || "";
-          if(data.length > 0){
-            let isDataObject = $("#isDecodePayloadObject").is(":checked");
-            let decodeObj = decodeURI(Base64.atob(data));
-            if(isDataObject){
-                decodeObj = JSON.stringify(JSON.parse(decodeObj));
-            }
-            $("#decodeOutput").val(decodeObj);
+          if (data.length > 0) {
+              let isDataObject = $("#isDecodePayloadObject").is(":checked");
+              let decodeObj = decodeURI(Base64.atob(data));
+              if (isDataObject) {
+                  decodeObj = JSON.stringify(JSON.parse(decodeObj));
+              }
+              $("#decodeOutput").val(decodeObj);
           }
       }
 
